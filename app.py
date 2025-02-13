@@ -30,13 +30,14 @@ footer {
 }
 """
 
-FOOTER_TEXT = """
+FOOTER_TEXT = f"""
 <footer>
     <p>If you enjoyed the functionality of the app, please leave a like!<br>
-    Check out more on <a href="https://www.linkedin.com/in/girish-wangikar/" target="_blank">LinkedIn</a> | 
-    <a href="https://girishwangikar.github.io/Girish_Wangikar_Portfolio.github.io/" target="_blank">Portfolio</a></p>
+    Check out more on <a href="https://www.linkedin.com/in/abdurahman27" target="_blank">LinkedIn</a> | 
+    <a href="https://abdulrahmanh.com/" target="_blank">Portfolio</a></p>
 </footer>
 """
+
 
 RESUME_ANALYZER_INSTRUCTIONS = """
 <div style="background-color: #000000; color: #ffffff; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
