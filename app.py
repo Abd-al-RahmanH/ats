@@ -5,8 +5,8 @@ from PyPDF2 import PdfReader
 from docx import Document
 
 # Watsonx.ai API details
-WATSONX_API_KEY = os.getenv("XfyqbHqkZSatzDxeQzzEdQbfu-DP-_ihUvSSmrmIiTmT")
-WATSONX_PROJECT_ID = os.getenv("289854e9-af72-4464-8bb2-4dedc59ad405")
+WATSONX_API_KEY = "XfyqbHqkZSatzDxeQzzEdQbfu-DP-_ihUvSSmrmIiTmT"
+WATSONX_PROJECT_ID = "289854e9-af72-4464-8bb2-4dedc59ad405"
 WATSONX_ENDPOINT = "https://us-south.ml.cloud.ibm.com/ml/v1-beta/generation/text"
 
 HEADERS = {
