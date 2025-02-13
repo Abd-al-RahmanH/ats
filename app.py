@@ -74,7 +74,7 @@ with gr.Blocks() as demo:
     with gr.Tab("Resume Analyzer"):
         with_job_description = gr.Checkbox("Analyze with Job Description", value=True)
         job_description = gr.Textbox("Job Description", lines=5)
-        resume_file = gr.File("Upload Resume (PDF or DOCX)")
+        resume_file = gr.File(label="Upload Resume (PDF or DOCX)")
         resume_content = gr.Textbox("Parsed Resume Content", lines=10)
         analyze_btn = gr.Button("Analyze Resume")
         output = gr.Markdown()
