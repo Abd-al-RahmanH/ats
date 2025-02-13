@@ -1,4 +1,5 @@
 gradio
-transformers
-PyPDF2
+requests
 python-docx
+PyPDF2
+ibm-watsonx-ai
