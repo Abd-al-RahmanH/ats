@@ -1,5 +1,4 @@
 gradio
-requests
-python-docx
+groq
 PyPDF2
-ibm-watsonx-ai
+python-docx
