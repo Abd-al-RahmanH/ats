@@ -7,21 +7,39 @@ from docx import Document
 # Watsonx.ai API details
 WATSONX_API_KEY = "XfyqbHqkZSatzDxeQzzEdQbfu-DP-_ihUvSSmrmIiTmT"
 WATSONX_PROJECT_ID = "289854e9-af72-4464-8bb2-4dedc59ad405"
-WATSONX_ENDPOINT = "https://us-south.ml.cloud.ibm.com/ml/v1-beta/generation/text"
+IAM_URL = "https://iam.cloud.ibm.com/identity/token"
+WATSONX_ENDPOINT = "https://us-south.ml.cloud.ibm.com/v1/text/generation"
 
-HEADERS = {
-    "Content-Type": "application/json",
-    "Authorization": f"Bearer {WATSONX_API_KEY}",
-    "ML-Instance-ID": WATSONX_PROJECT_ID
-}
+def get_access_token():
+    """Fetch a fresh IAM authentication token for Watsonx.ai"""
+    response = requests.post(
+        IAM_URL,
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        data=f"grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey={WATSONX_API_KEY}",
+    )
+    
+    if response.status_code == 200:
+        return response.json().get("access_token")
+    else:
+        raise Exception(f"Error fetching access token: {response.text}")
 
 def generate_response(prompt: str, temperature: float, max_tokens: int):
+    access_token = get_access_token()  # Fetch fresh token before request
+    
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}",
+        "ML-Instance-ID": WATSONX_PROJECT_ID
+    }
+
     payload = {
         "model_id": "ibm/granite-13b-chat-v1",
         "inputs": prompt,
         "parameters": {"decoding_method": "sample", "temperature": temperature, "max_new_tokens": max_tokens}
     }
-    response = requests.post(WATSONX_ENDPOINT, headers=HEADERS, json=payload)
+
+    response = requests.post(WATSONX_ENDPOINT, headers=headers, json=payload)
+    
     if response.status_code == 200:
         return response.json()["results"][0]["generated_text"]
     else:
