@@ -38,7 +38,6 @@ FOOTER_TEXT = f"""
 </footer>
 """
 
-
 RESUME_ANALYZER_INSTRUCTIONS = """
 <div style="background-color: #000000; color: #ffffff; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
     <p><strong>Instructions:</strong></p>
